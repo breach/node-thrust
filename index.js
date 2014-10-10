@@ -10,4 +10,4 @@
  */
 "use strict"
 
-module.exports = require('./lib/thurst.js').thurst({}).spawn;
+module.exports = require('./lib/thrust.js').thrust({}).spawn;

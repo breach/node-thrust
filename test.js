@@ -5,13 +5,13 @@ var shell = null;
 
 async.series([
   function(cb_) {
-    require('thrust')(function(err, api) {
+    require('./index.js')(function(err, api) {
       API = api;
       return cb_(err);
     });
   },
   function(cb_) {
-    shell = api.shell({
+    shell = API.shell({
       size: {
         width: 640,
         height: 480
@@ -20,7 +20,7 @@ async.series([
     shell.show(cb_);
   }
 ], function(err) {
-  console.log('DONE: ' + err);
+  console.log('DONE [' + err + ']');
 });
 
 /*
