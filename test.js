@@ -22,7 +22,6 @@ async.series([
     });
     return cb_();
   },
-  /*
   function(cb_) {
     menu = API.menu({});
     async.parallel([
@@ -36,6 +35,9 @@ async.series([
   },
   function(cb_) {
     file_menu = API.menu({});
+    file_menu.on('execute', function(e) {
+      console.log('EXECUTE: ' + JSON.stringify(e));
+    });
     async.parallel([
       function(cb_) {
         file_menu.item_at(0, 3, 'Open', cb_);
@@ -57,7 +59,6 @@ async.series([
   function(cb_) {
     menu.attach(window, cb_);
   },
-  */
   function(cb_) {
     window.show(cb_);
   },
