@@ -2,7 +2,7 @@ var async = require('async');
 
 var API = null;
 
-var shell = null;
+var window = null;
 var menu = null;
 var file_menu = null;
 
@@ -14,7 +14,7 @@ async.series([
     });
   },
   function(cb_) {
-    shell = API.shell({
+    window = API.window({
       size: {
         width: 800,
         height: 600
@@ -22,14 +22,15 @@ async.series([
     });
     return cb_();
   },
+  /*
   function(cb_) {
     menu = API.menu({});
     async.parallel([
       function(cb_) {
-        menu.item_at(0, 0, "File", cb_);
+        menu.item_at(0, 1, "File", cb_);
       },
       function(cb_) {
-        menu.item_at(1, 0, "Edit", cb_);
+        menu.item_at(1, 2, "Edit", cb_);
       }
     ], cb_);
   },
@@ -37,27 +38,28 @@ async.series([
     file_menu = API.menu({});
     async.parallel([
       function(cb_) {
-        file_menu.item_at(0, 0, 'Open', cb_);
+        file_menu.item_at(0, 3, 'Open', cb_);
       },
       function(cb_) {
-        file_menu.item_at(1, 0, 'Close', cb_);
+        file_menu.item_at(1, 4, 'Close', cb_);
       },
       function(cb_) {
         file_menu.separator_at(2, cb_);
       },
       function(cb_) {
-        file_menu.check_item_at(3, 0, 'Check', cb_);
+        file_menu.check_item_at(3, 5, 'Check', cb_);
       }
     ], cb_);
   },
   function(cb_) {
-    menu.submenu_at(0, 0, "Test", file_menu, cb_);
+    menu.submenu_at(0, 6, "Test", file_menu, cb_);
   },
   function(cb_) {
-    menu.attach(shell, cb_);
+    menu.attach(window, cb_);
   },
+  */
   function(cb_) {
-    shell.show(cb_);
+    window.show(cb_);
   },
 ], function(err) {
   console.log('DONE [' + err + ']');
@@ -89,7 +91,7 @@ var main = function() {
     perform({
       _id: ++action_id,
       _action: "create",
-      _type: "shell",
+      _type: "window",
       _args: {
         root_url: "file:///" + __dirname + "/test.html",
         title: "ExoShell TEST 1",
@@ -142,7 +144,7 @@ var main = function() {
           _target: res._target,
           _method: "attach",
           _args: {
-            shell_id: SHELL_ID
+            window_id: SHELL_ID
           }
         }, function(err, res) {
           console.log('ATTACH: ' + JSON.stringify(res));
