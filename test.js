@@ -37,6 +37,11 @@ async.series([
     file_menu = API.menu({});
     file_menu.on('execute', function(e) {
       console.log('EXECUTE: ' + JSON.stringify(e));
+      file_menu.set_enabled(e.command_id, false, function(err) {
+        if(err) {
+          console.log(err);
+        }
+      });
     });
     async.parallel([
       function(cb_) {
