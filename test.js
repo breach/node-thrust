@@ -26,10 +26,10 @@ async.series([
     menu = API.menu({});
     async.parallel([
       function(cb_) {
-        menu.item_at(0, 1, "File", cb_);
+        menu.add_item(1, "File", cb_);
       },
       function(cb_) {
-        menu.item_at(1, 2, "Edit", cb_);
+        menu.add_item(2, "Edit", cb_);
       }
     ], cb_);
   },
@@ -45,21 +45,21 @@ async.series([
     });
     async.parallel([
       function(cb_) {
-        file_menu.item_at(0, 3, 'Open', cb_);
+        file_menu.add_item(3, 'Open', cb_);
       },
       function(cb_) {
-        file_menu.item_at(1, 4, 'Close', cb_);
+        file_menu.add_item(4, 'Close', cb_);
       },
       function(cb_) {
-        file_menu.separator_at(2, cb_);
+        file_menu.add_separator(cb_);
       },
       function(cb_) {
-        file_menu.check_item_at(3, 5, 'Check', cb_);
+        file_menu.add_check_item(5, 'Check', cb_);
       }
     ], cb_);
   },
   function(cb_) {
-    menu.submenu_at(0, 6, "Test", file_menu, cb_);
+    menu.add_submenu(6, "Test", file_menu, cb_);
   },
   function(cb_) {
     menu.attach(window, cb_);
