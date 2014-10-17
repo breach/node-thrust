@@ -8,7 +8,18 @@
   },
   "version": "0.0.1",
   "dependencies": {
-    "async": "0.9.x"
+    "async": "0.9.x",
+    "mkdirp": "0.5.x",
+    "optimist": "0.6.x",
+    "fs-extra": "0.12.x",
+    "request": "2.45.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/breach/node-thrust.git"
+  },
+  "bugs": {
+    "url": "https://github.com/breach/node-thrust/issues"
   },
   "licenses": [
     {
@@ -16,5 +27,23 @@
       "url": "https://github.com/breach/breach_core/raw/master/LICENSE"
     }
   ],
-  "main": "./index.js"
+  "main": "./index.js",
+  "THRUST_VERSION": "v0.7.0",
+  "THRUST_BASE_URL": "https://github.com/breach/thrust/releases/download/",
+  "THRUST_RELEASE_PLATFORMS": {
+    "darwin": {
+      "x64": "darwin-x64"
+    },
+    "linux": {
+      "ia32": "linux-ia32",
+      "x64": "linux-x64"
+    },
+    "win32": {
+      "ia32": "win32-ia32",
+      "x64": "win32-ia32"
+    }
+  },
+  "scripts": {
+    "postinstall": "node scripts/bootstrap.js"
+  }
 }

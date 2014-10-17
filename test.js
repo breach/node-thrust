@@ -3,6 +3,7 @@ var async = require('async');
 var API = null;
 
 var window = null;
+var session = null;
 var menu = null;
 var file_menu = null;
 
@@ -14,7 +15,15 @@ async.series([
     });
   },
   function(cb_) {
+    session = API.session({
+      cookie_store: true,
+      off_the_record: false
+    });
+    return cb_();
+  },
+  function(cb_) {
     window = API.window({
+      session: session,
       size: {
         width: 800,
         height: 600
@@ -22,6 +31,7 @@ async.series([
     });
     return cb_();
   },
+  /*
   function(cb_) {
     menu = API.menu({});
     async.parallel([
@@ -64,6 +74,7 @@ async.series([
   function(cb_) {
     menu.attach(window, cb_);
   },
+  */
   function(cb_) {
     window.show(cb_);
   },
