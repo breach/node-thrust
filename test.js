@@ -10,6 +10,7 @@ var file_menu = null;
 async.series([
   function(cb_) {
     require('./index.js')(function(err, api) {
+      console.log('GO!');
       API = api;
       return cb_(err);
     });
@@ -31,7 +32,6 @@ async.series([
     });
     return cb_();
   },
-  /*
   function(cb_) {
     menu = API.menu({});
     async.parallel([
@@ -74,7 +74,6 @@ async.series([
   function(cb_) {
     menu.attach(window, cb_);
   },
-  */
   function(cb_) {
     window.show(cb_);
   },
