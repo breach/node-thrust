@@ -16,7 +16,6 @@ var path = require('path');
 var fs = require('fs-extra');
 var os = require('os');
 var request = require('request');
-var util = require('util');
 
 var common = require('../lib/common.js');
 
