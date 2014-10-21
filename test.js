@@ -10,10 +10,9 @@ var file_menu = null;
 async.series([
   function(cb_) {
     require('./index.js')(function(err, api) {
-      console.log('GO!');
       API = api;
       return cb_(err);
-    });
+    }, '/home/spolu/src/thrust/thrust/out/Release/thrust_shell');
   },
   function(cb_) {
     session = API.session({
