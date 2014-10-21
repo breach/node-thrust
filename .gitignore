@@ -2,3 +2,4 @@
 node_modules
 vendor
 dummy_session
+npm-debug.log
