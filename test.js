@@ -12,7 +12,7 @@ async.series([
     require('./index.js')(function(err, api) {
       API = api;
       return cb_(err);
-    }, '/home/spolu/src/thrust/thrust/out/Release/thrust_shell');
+    }/* , '/home/spolu/src/thrust/thrust/out/Release/thrust_shell' */);
   },
   function(cb_) {
     session = API.session({
@@ -31,6 +31,7 @@ async.series([
     });
     return cb_();
   },
+  /*
   function(cb_) {
     menu = API.menu({});
     async.parallel([
@@ -73,6 +74,7 @@ async.series([
   function(cb_) {
     menu.attach(window, cb_);
   },
+  */
   function(cb_) {
     window.show(cb_);
   },
