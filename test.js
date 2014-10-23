@@ -12,7 +12,7 @@ async.series([
     require('./index.js')(function(err, api) {
       API = api;
       return cb_(err);
-    }/* , '/home/spolu/src/thrust/thrust/out/Release/thrust_shell' */);
+    }/*, '/home/spolu/src/thrust/thrust/out/Release/thrust_shell' */);
   },
   function(cb_) {
     session = API.session({
