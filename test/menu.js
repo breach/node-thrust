@@ -1,5 +1,7 @@
-var async = require('async');
 var common = require('../lib/common.js');
+
+var async = require('async');
+var os = require('os');
 
 var _api = null;
 var _window = null;
@@ -51,7 +53,15 @@ async.series([
     _menu.add_submenu(6, "Test", _file, cb_);
   },
   function(cb_) {
-    _menu.attach(_window, cb_);
+    if(os.platform() === 'linux') {
+      _menu.attach(_window, cb_);
+    }
+    else if(os.platform() === 'darwin') {
+      _menu.set_application_menu(cb_);
+    }
+    else {
+      return cb_();
+    }
   },
   function(cb_) {
     _window.show(cb_);
