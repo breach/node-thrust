@@ -16,7 +16,8 @@ async.series([
       size: {
         width: 1024,
         height: 768
-      }
+      },
+      icon_path: require('path').resolve(__dirname, 'window_icon.png')
     });
     return cb_();
   },

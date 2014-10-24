@@ -16,6 +16,6 @@
 // argument or the one installed locally
 
 module.exports = function(cb_) {
-  console.log(process.argv);
-  require('../index.js')(cb_);
+  var argv = require('minimist')(process.argv.slice(2));
+  require('../index.js')(cb_, argv.thrust_path || null);
 };
