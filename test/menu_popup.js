@@ -40,12 +40,6 @@ async.series([
       function(cb_) {
         _file.add_item(4, 'Close', cb_);
       },
-      function(cb_) {
-        _file.add_separator(cb_);
-      },
-      function(cb_) {
-        _file.add_check_item(5, 'Check', cb_);
-      }
     ], cb_);
   },
   function(cb_) {
@@ -53,18 +47,10 @@ async.series([
     _menu.add_submenu(6, "Test", _file, cb_);
   },
   function(cb_) {
-    if(os.platform() === 'linux') {
-      _menu.attach(_window, cb_);
-    }
-    else if(os.platform() === 'darwin') {
-      _menu.set_application_menu(cb_);
-    }
-    else {
-      return cb_();
-    }
+    _window.show(cb_);
   },
   function(cb_) {
-    _window.show(cb_);
+    _menu.popup(_window, cb_);
   },
 ], function(err) {
   if(err) {
