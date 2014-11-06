@@ -16,13 +16,15 @@ async.series([
       size: {
         width: 1024,
         height: 768
-      },
-      root_url: 'file://' + require('path').resolve(__dirname, 'webview_base.html')
+      }
     });
     return cb_();
   },
   function(cb_) {
     _window.show(cb_);
+  },
+  function(cb_) {
+    _window.open_devtools(cb_);
   }
 ], function(err) {
   if(err) {

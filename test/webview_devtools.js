@@ -17,7 +17,7 @@ async.series([
         width: 1024,
         height: 768
       },
-      root_url: 'file://' + require('path').resolve(__dirname, 'webview_base.html')
+      root_url: 'file://' + require('path').resolve(__dirname, 'webview_devtools.html')
     });
     return cb_();
   },

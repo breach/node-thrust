@@ -3,10 +3,10 @@
     <div style="border: 1px solid blue; height: 300px;" id="test1">
       <webview src="http://www.google.com"></webview>
     </div>
-    <!--
     <div style="border: 1px solid blue; height: 100px;" id="test2">
       <webview src="http://www.google.com"></webview>
     </div>
+    <!--
     <div style="border: 1px solid blue; height: 100px;" id="test3">
       <webview src="http://www.google.com"></webview>
     </div>
@@ -18,6 +18,7 @@
           //$('#test1 webview').remove();
           console.log('ProcessId: ' + $('#test1 webview')[0].getProcessId());
           $('#test1 webview')[0].insertCSS('a { font-weight: bold; }');
+          $('#test2 webview').css({ display: 'none' });
 
           //console.log('ProcessId: ' + $('#test2 webview')[0].getProcessId());
           //console.log('ProcessId: ' + $('#test3 webview')[0].getProcessId());
