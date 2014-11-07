@@ -29,7 +29,7 @@
             console.log('NEW-WINDOW');
           });
           $('#test1 webview').on('console', function(evt) {
-            console.log('CONSOLE');
+            console.log('CONSOLE: ' + evt.originalEvent.message);
           });
         }, 1000);
       });

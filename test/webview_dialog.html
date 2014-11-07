@@ -1,0 +1,27 @@
+<html>
+  <body style="border: 1px solid black;">
+    <div style="border: 1px solid blue; height: 100%;" id="test">
+      <webview src="http://www.google.com"></webview>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        setTimeout(function() {
+          //$('#test1 webview').remove();
+          console.log('ProcessId: ' + $('#test webview')[0].getProcessId());
+
+          $('#test webview')[0].openDevTools();
+          $('#test webview')[0].executeScript('console.log("CONFIRM: " + window.confirm("OK!")); console.log("test");');
+
+          $('#test webview').on('dialog', function(evt) {
+            console.log('DIALOG: ' + evt.originalEvent.message_type);
+            evt.originalEvent.ok('test');
+          });
+          $('#test webview').on('console', function(evt) {
+            console.log('CONSOLE: ' + evt.originalEvent.message);
+          });
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
