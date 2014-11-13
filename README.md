@@ -8,6 +8,8 @@ Official NodeJS bindings library for [Thrust](http://github.com/breach/thrust)
 ```
 npm install node-thrust
 ```
+At install, node-thrust `post_install` script automatically downloads a binary 
+distribution of Thrust for the current platform.
 
 ```
 require('node-thrust')(function(err, api) { 
