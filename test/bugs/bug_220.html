@@ -1,0 +1,19 @@
+<html>
+  <body style="border: 1px solid black;">
+    <div style="height: 100%" id="test">
+      <webview src="http://google.com"></webview>
+      <iframe style="width: 100%; height: 300px;"></iframe>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      console.log('FOO BAR ' + document.createElement('webview'));
+      $(document).ready(function(){
+        console.log('****************** API: ' + $('#test webview')[0].loadUrl);
+        setTimeout(function() {
+          console.log('GO: ' + document.URL);
+          $('#test iframe').attr('src', document.URL);
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>

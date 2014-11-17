@@ -14,7 +14,11 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
+        $('#test1 webview').on('title-set', function(evt) {
+          console.log('TITLE: ' + evt.originalEvent.title);
+        });
         setTimeout(function() {
+          console.log('TITLE READ: ' + $('#test1 webview')[0].getTitle());
           //$('#test1 webview').remove();
           console.log('ProcessId: ' + $('#test1 webview')[0].getProcessId());
           $('#test1 webview')[0].insertCSS('a { font-weight: bold; }');

@@ -1,0 +1,24 @@
+<html>
+  <body style="border: 1px solid black;">
+    <div style="height: 100%" id="test">
+      <webview src="http://www.google.com"></webview>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('#test webview').on('title-set', function(evt) {
+          console.log('TITLE: ' + evt.originalEvent.title);
+        });
+        setTimeout(function() {
+          $('#test webview')[0].loadUrl('http://google.fr');
+          setTimeout(function() {
+            $('#test webview')[0].back();
+            setTimeout(function() {
+              console.log('CAN GO FORWARD: ' + $('#test webview')[0].canGoForward());
+            }, 3000);
+          }, 3000);
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>

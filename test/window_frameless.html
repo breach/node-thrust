@@ -1,0 +1,26 @@
+<html>
+  <body style="width: 100%; overflow: hidden;">
+    <div style="position: absolute; 
+                -webkit-app-region: drag;
+                -webkit-user-select: none;
+                top: 0px; height: 20px; 
+                left: 0px; right: 0px;
+                background-color: #eee;">
+      BAR
+    </div>
+    <div style="position: absolute; 
+                top: 20px; bottom: 0px; 
+                left: 0px; right: 0px;" id="test">
+      <webview src="http://www.google.com"></webview>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        setTimeout(function() {
+          //$('#test1 webview').remove();
+          console.log('ProcessId: ' + $('#test webview')[0].getProcessId());
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

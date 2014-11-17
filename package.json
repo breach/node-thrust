@@ -6,7 +6,7 @@
     "email": "polu.stanislas@gmail.com",
     "url": "http://github.com/spolu"
   },
-  "version": "0.1.5",
+  "version": "0.7.5",
   "dependencies": {
     "async": "0.9.x",
     "fs-extra": "0.12.x",
@@ -30,7 +30,7 @@
     }
   ],
   "main": "./index.js",
-  "THRUST_VERSION": "v0.7.4",
+  "THRUST_VERSION": "v0.7.5",
   "THRUST_BASE_URL": "https://github.com/breach/thrust/releases/download/",
   "THRUST_RELEASE_PLATFORMS": {
     "darwin": {
