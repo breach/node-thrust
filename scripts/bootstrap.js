@@ -18,6 +18,7 @@ var os = require('os');
 var request = require('request');
 
 var common = require('../lib/common.js');
+var unzip = require('unzip');
 
 /******************************************************************************/
 /* CONFIGURATION */
@@ -114,23 +115,9 @@ var install_thrust = function(force, cb_) {
     function(cb_) {
       console.log('Extracting ' + path.join(THRUST_PATH, 
                                             THRUST_RELEASE_FILENAME));
-      var unzip = require('child_process').spawn('unzip', 
-        [ '-oqq', path.join(THRUST_PATH, THRUST_RELEASE_FILENAME) ], {
-          cwd: THRUST_PATH
-        });
-      unzip.stdout.on('data', function (data) {
-        console.log('stdout: ' + data);
-      });
-      unzip.stderr.on('data', function (data) {
-        console.log('stderr: ' + data);
-      });
-      unzip.on('close', function (code) {
-        if(code !== 0) {
-          return cb_(common.err('Extraction failed with code: ' + code,
-                                'boostrap:failed_extraction'));
-        }
-        return cb_();
-      });
+      fs.createReadStream(path.join(THRUST_PATH, THRUST_RELEASE_FILENAME)).pipe(unzip.Extract({
+        path: THRUST_PATH
+      })).on('end', cb_);
     },
     /* Cleaning up */
     function(cb_) {
