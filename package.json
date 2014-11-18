@@ -6,7 +6,7 @@
     "email": "polu.stanislas@gmail.com",
     "url": "http://github.com/spolu"
   },
-  "version": "0.7.5",
+  "version": "0.7.5-rc2",
   "dependencies": {
     "async": "0.9.x",
     "fs-extra": "0.12.x",
