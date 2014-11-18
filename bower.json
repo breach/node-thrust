@@ -1,0 +1,26 @@
+{
+  "name": "node-thrust",
+  "authors": [
+    "Stanislas Polu"
+  ],
+  "version": "0.7.5",
+  "description": "Binding library for Thrust",
+  "keywords": [
+    "thrust",
+    "chrome",
+    "framework",
+    "application",
+    "cross-platform"
+  ],
+  "main": "./index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/breach/node-thrust.git",
+  "dependencies": {
+    "node-mkdirp": "git://github.com/substack/node-mkdirp.git#~0.5.0",
+    "async": "~0.9.0",
+    "node-optimist": "git://github.com/substack/node-optimist.git#~0.6.1",
+    "node-fs-extra": "git://github.com/jprichardson/node-fs-extra.git#~0.12.0",
+    "request": "git://github.com/request/request.git#~2.48.1",
+    "minimist": "git://github.com/substack/minimist.git#~1.1.0"
+  }
+}
