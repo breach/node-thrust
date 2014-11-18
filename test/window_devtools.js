@@ -25,6 +25,11 @@ async.series([
   },
   function(cb_) {
     _window.open_devtools(cb_);
+  },
+  function(cb_) {
+    setTimeout(function() {
+      _window.close_devtools(cb_);
+    }, 3000);
   }
 ], function(err) {
   if(err) {

@@ -18,7 +18,7 @@
 module.exports = function(cb_) {
   var argv = require('minimist')(process.argv.slice(2));
   require('../index.js')(cb_, { 
-    exec_path: argv.thrust_path || null,
+    exec_path: argv.exec_path || null,
     args: {}
   });
 };
