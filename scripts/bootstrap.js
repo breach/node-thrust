@@ -66,6 +66,7 @@ var install_thrust = function(force, cb_) {
     },
     /* Check for the THRUST_VERSION_PATH or remove it */
     function(cb_) {
+      console.log(THRUST_VERSION_PATH)
       fs.readFile(THRUST_VERSION_PATH, function(err, data) {
         if(err && err.code !== 'ENOENT') {
           return cb_(err);
@@ -115,9 +116,40 @@ var install_thrust = function(force, cb_) {
     function(cb_) {
       console.log('Extracting ' + path.join(THRUST_PATH, 
                                             THRUST_RELEASE_FILENAME));
-      fs.createReadStream(path.join(THRUST_PATH, THRUST_RELEASE_FILENAME)).pipe(unzip.Extract({
-        path: THRUST_PATH
-      })).on('end', cb_);
+      if(os.platform() === 'darwin') {
+        var unzip_p = require('child_process').spawn('unzip', 
+          [ '-oqq', path.join(THRUST_PATH, THRUST_RELEASE_FILENAME) ], {
+            cwd: THRUST_PATH
+        });
+        unzip_p.on('close', function (code) {
+          if(code !== 0) {
+            return cb_(common.err('Extraction failed with code: ' + code,
+                                  'boostrap:failed_extraction'));
+          }
+          return cb_();
+        });
+      }
+      else {
+        async.series([
+          function(cb_) {
+            fs.createReadStream(path.join(THRUST_PATH, THRUST_RELEASE_FILENAME))
+              .on('end', cb_)
+              .on('error', cb_)
+              .pipe(unzip.Extract({
+                path: THRUST_PATH
+              }));
+          },
+          function(cb_) {
+            if(os.platform() === 'linux') {
+              var exec_path = path.join(THRUST_PATH, 'thrust_shell');
+              fs.chmod(exec_path, 755, cb_);
+            }
+            else {
+              return cb_();
+            }
+          }
+        ], cb_);
+      }
     },
     /* Cleaning up */
     function(cb_) {
