@@ -8,7 +8,6 @@
  * @log:
  * - 2014-10-16 spolu   Creation
  */
-"use strict"
 
 var async = require('async');
 var mkdirp = require('mkdirp');
@@ -142,7 +141,7 @@ var install_thrust = function(force, cb_) {
           function(cb_) {
             if(os.platform() === 'linux') {
               var exec_path = path.join(THRUST_PATH, 'thrust_shell');
-              fs.chmod(exec_path, 755, cb_);
+              fs.chmod(exec_path, 0755, cb_);
             }
             else {
               return cb_();
