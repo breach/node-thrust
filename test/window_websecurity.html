@@ -1,0 +1,19 @@
+<html>
+  <body style="width: 100%; overflow: hidden;">
+    RESULT:
+    <div id="result">
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+
+      $(document).ready(function(){
+        $.get("https://api.instagram.com/v1/media/popular", function(data) {
+          console.log(data);
+          $("#result").text(JSON.stringify(data));
+        }).fail(function(err) {
+          $("#result").text(JSON.stringify(err));
+        });
+      });
+    </script>
+  </body>
+</html>
