@@ -1,0 +1,14 @@
+<html>
+  <body style="width: 100%; overflow: hidden;">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        THRUST.remote.listen(function(msg) {
+          console.log('MESSAGE');
+          console.log(JSON.stringify(msg));
+        });
+        THRUST.remote.send({ foo: 'bar' });
+      });
+    </script>
+  </body>
+</html>
