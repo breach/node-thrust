@@ -132,11 +132,10 @@ var install_thrust = function(force, cb_) {
         async.series([
           function(cb_) {
             fs.createReadStream(path.join(THRUST_PATH, THRUST_RELEASE_FILENAME))
-              .on('end', cb_)
               .on('error', cb_)
               .pipe(unzip.Extract({
                 path: THRUST_PATH
-              }));
+              }).on('close', cb_));
           },
           function(cb_) {
             if(os.platform() === 'linux') {
