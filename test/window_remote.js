@@ -23,6 +23,7 @@ async.series([
       console.log('REMOTE');
       console.log(JSON.stringify(evt.message));
       _window.remote({ foo: 'reply' });
+      _window.remote("reply");
     });
     return cb_();
   },
