@@ -1,12 +1,12 @@
 var common = require('../lib/common.js');
 
 var async = require('async');
-var os = require('os');
 
 var _api = null;
 var _window_1 = null;
 var _window_2 = null;
 var _menu = null;
+var _file = null;
 
 async.series([
   function(cb_) {
